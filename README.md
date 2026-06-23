@@ -1,6 +1,6 @@
 # CollegeSphere - College Discovery Platform
 
-A production-grade MVP for a college discovery and decision-making platform built with **Next.js**, **Express.js**, and **PostgreSQL**.
+A production-grade MVP for a college discovery and decision-making platform built with **Next.js**, **PostgreSQL**, and **Next.js API routes**.
 
 ## Features
 
@@ -53,35 +53,6 @@ A production-grade MVP for a college discovery and decision-making platform buil
 
 ```
 Internship Project/
-├── backend/
-│   ├── src/
-│   │   ├── config/
-│   │   │   └── database.js
-│   │   ├── middleware/
-│   │   │   ├── auth.js
-│   │   │   └── errorHandler.js
-│   │   ├── models/
-│   │   │   ├── College.js
-│   │   │   ├── User.js
-│   │   │   └── UserSavedItems.js
-│   │   ├── controllers/
-│   │   │   ├── collegeController.js
-│   │   │   ├── authController.js
-│   │   │   ├── compareController.js
-│   │   │   └── userController.js
-│   │   ├── routes/
-│   │   │   ├── colleges.js
-│   │   │   ├── auth.js
-│   │   │   ├── compare.js
-│   │   │   └── users.js
-│   │   ├── scripts/
-│   │   │   ├── migrate.js (Database schema)
-│   │   │   └── seed.js (Sample data)
-│   │   ├── app.js (Express setup)
-│   │   └── index.js (Server entry)
-│   ├── package.json
-│   └── .env.example
-│
 └── frontend/
     ├── pages/
     │   ├── _app.jsx
@@ -93,17 +64,40 @@ Internship Project/
     │   ├── login.jsx (Auth)
     │   ├── signup.jsx (Auth)
     │   └── saved.jsx (Saved items)
+    ├── pages/api/
+    │   ├── auth/
+    │   │   ├── login.js
+    │   │   ├── me.js
+    │   │   └── signup.js
+    │   ├── colleges/
+    │   │   ├── [id].js
+    │   │   ├── index.js
+    │   │   └── search.js
+    │   ├── compare/
+    │   │   ├── [id].js
+    │   │   └── index.js
+    │   └── users/
+    │       ├── save-college.js
+    │       ├── saved-colleges.js
+    │       └── check-saved/
+    │           └── [collegeId].js
     ├── components/
     │   ├── Header.jsx
     │   ├── Layout.jsx
     │   ├── SearchBar.jsx
     │   └── CollegeCard.jsx
     ├── lib/
-    │   └── api.js (API client)
-    ├── store/
-    │   └── index.js (Zustand stores)
-    ├── styles/
-    │   └── globals.css
+    │   ├── api.js (API client)
+    │   ├── auth.js
+    │   ├── db/
+    │   │   └── index.js
+    │   └── models/
+    │       ├── College.js
+    │       ├── User.js
+    │       └── UserSavedItems.js
+    ├── scripts/
+    │   ├── migrate.js (Database schema)
+    │   └── seed.js (Sample data)
     ├── package.json
     ├── next.config.js
     ├── tailwind.config.js
@@ -117,52 +111,9 @@ Internship Project/
 - npm or yarn
 - PostgreSQL (v12+)
 
-### Backend Setup
+### Local Setup
 
-1. **Navigate to backend directory:**
-```bash
-cd backend
-```
-
-2. **Install dependencies:**
-```bash
-npm install
-```
-
-3. **Create .env file:**
-```bash
-cp .env.example .env
-```
-
-4. **Update .env with your PostgreSQL credentials:**
-```
-DATABASE_URL=postgresql://user:password@localhost:5432/collegedunia
-JWT_SECRET=your_super_secret_key_change_in_production
-PORT=5000
-NODE_ENV=development
-FRONTEND_URL=http://localhost:3000
-```
-
-5. **Create PostgreSQL database:**
-```bash
-psql -U postgres -c "CREATE DATABASE collegedunia;"
-```
-
-6. **Initialize database schema and seed data:**
-```bash
-npm run migrate && npm run seed
-```
-
-7. **Start the backend server:**
-```bash
-npm run dev
-```
-
-Server will start at `http://localhost:5000`
-
-### Frontend Setup
-
-1. **Navigate to frontend directory (in a new terminal):**
+1. **Navigate to frontend directory:**
 ```bash
 cd frontend
 ```
@@ -172,17 +123,29 @@ cd frontend
 npm install
 ```
 
-3. **Create .env.local file:**
+3. **Create `.env.local` file:**
 ```bash
-echo "NEXT_PUBLIC_API_URL=http://localhost:5000/api" > .env.local
+copy .env.local.example .env.local
 ```
 
-4. **Start the development server:**
+4. **Update `.env.local` with your PostgreSQL credentials:**
+```
+DATABASE_URL=postgresql://user:password@localhost:5432/collegesphere
+JWT_SECRET=your_super_secret_key_change_in_production
+NODE_ENV=development
+```
+
+5. **Initialize database schema and seed data:**
+```bash
+npm run migrate && npm run seed
+```
+
+6. **Start the development server:**
 ```bash
 npm run dev
 ```
 
-Frontend will be available at `http://localhost:3000`
+Frontend and API routes will be available at `http://localhost:3000`
 
 ## API Documentation
 
@@ -385,22 +348,17 @@ Authorization: Bearer {token}
 
 ## Running the Application
 
-### Terminal 1 - Backend
+### Local Development
 ```bash
-cd backend
+cd frontend
 npm install
 npm run migrate && npm run seed  # First time only
 npm run dev
 ```
 
-### Terminal 2 - Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
 Visit `http://localhost:3000` in your browser.
+
+API routes are available under `/api/*` and are served by Next.js API routes.
 
 ## Sample Credentials
 
@@ -439,6 +397,7 @@ After running `npm run seed`, use any of these colleges to explore:
 - Email notifications
 - Mobile app
 - Caching layer (Redis)
+
 ## Deployment
 
 This project is deployed as a single Next.js application.
@@ -465,5 +424,3 @@ For issues or questions, please open an issue in the repository.
 ---
 
 **Built with ❤️ for college discovery excellence**
-
- 
