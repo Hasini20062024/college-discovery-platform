@@ -439,19 +439,20 @@ After running `npm run seed`, use any of these colleges to explore:
 - Email notifications
 - Mobile app
 - Caching layer (Redis)
-
 ## Deployment
 
-### Backend (Heroku/Railway/Render)
-1. Add Procfile
-2. Configure environment variables
-3. Connect PostgreSQL addon
+This project is deployed as a single Next.js application.
+
+### Vercel Deployment
+1. Connect the GitHub repository to Vercel
+2. Set the root directory to `frontend`
+3. Configure environment variables:
+   - `DATABASE_URL`
+   - `JWT_SECRET`
+   - `NODE_ENV=production`
 4. Deploy
 
-### Frontend (Vercel/Netlify)
-1. Connect repository
-2. Set environment variables
-3. Auto-deploy on push
+Your UI and backend API routes will both be served from the same Vercel app.
 
 ## License
 
@@ -464,3 +465,5 @@ For issues or questions, please open an issue in the repository.
 ---
 
 **Built with ❤️ for college discovery excellence**
+
+ 
