@@ -1,4 +1,4 @@
-# CollegeDunia - College Discovery Platform
+# CollegeSphere - College Discovery Platform
 
 A production-grade MVP for a college discovery and decision-making platform built with **Next.js**, **Express.js**, and **PostgreSQL**.
 
