@@ -35,8 +35,8 @@ A production-grade MVP for a college discovery and decision-making platform buil
 
 ## Tech Stack
 
-### Backend
-- **Node.js + Express.js** - RESTful API server
+### API / Backend
+- **Next.js API Routes** - Backend API endpoints inside `frontend/pages/api`
 - **PostgreSQL** - Database
 - **JWT** - Authentication
 - **bcryptjs** - Password hashing
